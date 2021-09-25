@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+    --fz-xs: 0.75rem; /* 12px */
+    --fz-s: 0.875rem; /* 14px */
+    --fz-m: 1rem; /* 16px */
+    --fz-l: 1.5rem; /* 24px */
+    --fz-xl: 2.25rem; /* 36px */
+    --fz-xxl: 3rem; /* 48px */
+    /* ////////////////////////// */
+    --fw-light: 400;
+    --fw-normal: 500;
+    --fw-bold: 600;
+    --fw-extra-bold: 700;
+}

@@ -1,0 +1,63 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+textarea {
+    resize: none;
+    font-family: "Poppins", sans-serif;
+}
+
+section {
+    width: 100%;
+}
+
+body {
+    height: 2000px;
+    margin: 0;
+    font-family: "Poppins", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+        "Droid Sans", "Helvetica Neue", sans-serif;
+    color: var(--clr-text);
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+#container {
+    width: min(1024px, 80%);
+    margin: 0 auto;
+}
+
+.split-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.split-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    #container {
+        width: min(1024px, 85%);
+    }
+}

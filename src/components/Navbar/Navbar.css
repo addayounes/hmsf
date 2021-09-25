@@ -1,0 +1,51 @@
+header {
+    position: fixed;
+    width: 100%;
+    padding: 0.5rem 0;
+    transition: 200ms ease;
+    z-index: 100;
+}
+header.scrolled {
+    background-color: #fff !important;
+    transition: 200ms cubic-bezier(1, 0, 0, 1);
+}
+.navbar nav ul {
+    list-style: none;
+}
+.navbar nav ul li + li {
+    margin-left: 1.5rem;
+}
+.navbar nav ul li {
+    font-weight: var(--fw-normal);
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.navbar nav ul li a {
+    text-decoration: none;
+    color: var(--clr-text);
+}
+.navbar nav ul li a.active {
+    color: var(--clr-primary);
+    position: relative;
+}
+.navbar nav ul li a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 4px;
+    background-color: var(--clr-primary);
+}
+.navbar .logo {
+    font-size: var(--fz-xl);
+    font-weight: 300;
+}
+.navbar .nav-cta {
+    font-size: 1.3125rem;
+}
+.navbar .nav-cta > svg + svg {
+    margin-left: 1rem;
+}
+.navbar .nav-cta > svg {
+    cursor: pointer;
+}
