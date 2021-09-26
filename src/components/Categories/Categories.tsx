@@ -8,8 +8,8 @@ const Categories: React.FC = () => {
         <section className='categories-section'>
             <h1>our categories</h1>
             <div className='categories' id='container'>
-                {categories.map((category) => (
-                    <Category category={category} />
+                {categories.map((category, idx) => (
+                    <Category key={idx} category={category} />
                 ))}
             </div>
         </section>

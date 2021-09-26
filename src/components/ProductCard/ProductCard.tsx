@@ -2,7 +2,7 @@ import React from "react";
 import { FaCrown } from "react-icons/fa";
 import "./ProductCard.css";
 
-interface ProductCardProps {
+export interface ProductCardProps {
     product: {
         title: string;
         price: number;

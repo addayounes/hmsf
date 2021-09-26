@@ -1,19 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { getFlowers } from "../../redux/ducks/flowers";
 import Button from "../Button/Button";
-import ez from "../../assets/categories/cat1.jpeg";
 import ProductCard from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
-interface BestSellingProps {}
-
-const product = {
-    title: " hey there this is me maria what u up to",
-    price: 500,
-    image: ez,
-    bestSelling: true,
-};
-
-const BestSelling: React.FC<BestSellingProps> = ({}) => {
+const BestSelling: React.FC = () => {
+    const dispatch = useDispatch();
+    const flowers = useSelector((state: RootStateOrAny) => state.flowersReducer.flowers);
+    useEffect(() => {
+        dispatch(getFlowers());
+    }, []);
     return (
         <section>
             <div className='best-selling' id='container'>
@@ -23,9 +20,10 @@ const BestSelling: React.FC<BestSellingProps> = ({}) => {
                 </div>
 
                 <div className='best-selling-products '>
-                    <ProductCard product={product} />
-                    <ProductCard product={product} />
-                    <ProductCard product={product} />
+                    {flowers &&
+                        flowers.map((flower: any, idx: number) => {
+                            return <ProductCard key={idx} product={flower} />;
+                        })}
                 </div>
             </div>
         </section>

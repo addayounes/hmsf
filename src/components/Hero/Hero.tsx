@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../Button/Button";
 import Navbar from "../Navbar/Navbar";
 import "./Hero.css";
 
 const Hero: React.FC = () => {
+    useEffect(() => {}, []);
     return (
         <section className='hero'>
             <Navbar />
