@@ -1,0 +1,41 @@
+.categories-section h1 {
+    text-align: center;
+    margin-top: 4rem;
+    font-weight: var(--fw-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.categories {
+    display: flex;
+    justify-content: space-between;
+    padding: 4em 0;
+}
+.categories .category + div {
+    margin-left: 1rem;
+}
+.category {
+    text-align: center;
+}
+.category .category-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 200ms ease-out;
+}
+.category .category-img:hover {
+    border-radius: 40%;
+    transition: 200ms ease-out;
+}
+.category .category-img img {
+    width: auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category .category-title {
+    font-size: var(--fz-l);
+    text-transform: capitalize;
+    margin-top: 1rem;
+}

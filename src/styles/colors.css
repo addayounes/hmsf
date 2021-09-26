@@ -2,6 +2,9 @@
     --clr-primary: hsl(342, 100%, 74%);
     --clr-primary-dark: hsl(342, 100%, 67%);
     --clr-primary-light: hsl(342, 70%, 80%);
+    --clr-secondary: hsl(343, 28%, 25%);
+    --clr-secondary-dark: hsl(343, 28%, 18%);
+    --clr-secondary-light: hsl(343, 100%, 94%);
     --clr-hero: hsl(163, 91%, 96%);
     --clr-text: hsl(0, 0%, 20%);
     --clr-light-grey: hsl(0, 0%, 85%);

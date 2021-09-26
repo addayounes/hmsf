@@ -1,0 +1,14 @@
+.best-selling .best-selling-header {
+    padding: 2em 0;
+}
+.best-selling .best-selling-header h1 {
+    font-weight: var(--fz-normal);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.best-selling-products {
+    display: flex;
+}
+.best-selling-products > div {
+    flex-basis: 100%;
+}
