@@ -10,4 +10,8 @@ export const getProducts = async () => {
     return products;
 };
 
+export const addFlowers = async (flower: Object) => {
+    await addDoc(collection(db, "products"), flower);
+};
+
 export default db;

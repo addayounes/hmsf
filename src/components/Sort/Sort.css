@@ -1,0 +1,18 @@
+.sort,
+.filter {
+    padding: 0.3em 0.5em;
+    user-select: none;
+    transition: 200ms ease-out;
+}
+.sort > svg {
+    margin-left: 0.5rem;
+}
+.filter > svg {
+    margin-right: 0.5rem;
+}
+.sort:hover,
+.filter:hover {
+    background-color: var(--clr-light-grey);
+    cursor: pointer;
+    transition: 200ms ease-out;
+}

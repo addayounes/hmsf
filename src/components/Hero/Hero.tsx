@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import Button from "../Button/Button";
-import Navbar from "../Navbar/Navbar";
+import { useHistory } from "react-router-dom";
 import "./Hero.css";
 
 const Hero: React.FC = () => {
+    const history = useHistory();
     useEffect(() => {}, []);
     return (
         <section className='hero'>
-            <Navbar />
             <div className='hero-content'>
                 <div id='container'>
                     <h1>
@@ -16,7 +16,11 @@ const Hero: React.FC = () => {
                         they <span>show</span>
                     </h1>
                     <p>Surprise who you love with flowers from HMSF</p>
-                    <Button label='shop now' variant='primary' />
+                    <Button
+                        onClick={() => history.push("/store")}
+                        label='shop now'
+                        variant='primary'
+                    />
                 </div>
             </div>
         </section>

@@ -1,5 +1,6 @@
 header {
-    position: fixed;
+    position: sticky;
+    top: 0;
     width: 100%;
     padding: 0.5rem 0;
     transition: 200ms ease;
@@ -8,7 +9,12 @@ header {
 header.scrolled {
     background-color: #fff !important;
     transition: 200ms cubic-bezier(1, 0, 0, 1);
+    box-shadow: 0 -12px 15px 6px rgba(0, 0, 0, 0.2);
 }
+header.home-position {
+    position: fixed !important;
+}
+
 .navbar nav ul {
     list-style: none;
 }

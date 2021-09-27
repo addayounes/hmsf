@@ -1,0 +1,20 @@
+.shop h1 {
+    text-align: center;
+    padding: 2.5em 0;
+    text-transform: uppercase;
+    font-weight: var(--fw-normal);
+    letter-spacing: 1px;
+}
+.shop-header {
+    padding: 1em 0;
+    border-top: 1px solid var(--clr-grey);
+    border-bottom: 1px solid var(--clr-grey);
+}
+.store-items {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2em 0;
+}
+.store-items > div {
+    flex-basis: calc(25% - 2rem);
+}

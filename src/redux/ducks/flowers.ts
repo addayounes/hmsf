@@ -6,11 +6,17 @@ import { RootStateOrAny } from "react-redux";
 // actions types
 
 const SET_FLOWERS: string = "SET_FLOWERS";
+const SET_BEST_SELLING_FLOWERS: string = "SET_BEST_SELLING_FLOWERS";
 
 // sync actions
 
 const setFlowers = (flowers: ProductCardProps[]) => ({
     type: SET_FLOWERS,
+    payload: flowers,
+});
+
+const setBestSellingFlowers = (flowers: ProductCardProps[]) => ({
+    type: SET_BEST_SELLING_FLOWERS,
     payload: flowers,
 });
 
@@ -21,17 +27,30 @@ export const getFlowers = () => async (dispatch: Dispatch<{}>) => {
     dispatch(setFlowers(flowers));
 };
 
+export const getBestSellingFlowers = () => async (dispatch: Dispatch<{}>) => {
+    const flowers = (await getProducts()) as ProductCardProps[];
+    dispatch(setBestSellingFlowers(flowers.slice(0, 3)));
+};
+
+interface FlowersState {
+    flowers: ProductCardProps[];
+    bestSelling: ProductCardProps[];
+}
+
 const initialState = {
     flowers: null,
+    bestSelling: null,
 };
 
 const flowersReducer = (
-    state: RootStateOrAny = initialState,
+    state: FlowersState | any = initialState,
     { type, payload }: { type: string; payload: any }
 ) => {
     switch (type) {
         case SET_FLOWERS:
             return { ...state, flowers: payload };
+        case SET_BEST_SELLING_FLOWERS:
+            return { ...state, bestSelling: payload };
         default:
             return state;
     }

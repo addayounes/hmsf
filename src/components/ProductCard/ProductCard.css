@@ -3,7 +3,9 @@
 }
 .product-card-img {
     position: relative;
+    overflow: hidden;
 }
+
 .product-card-img > span {
     position: absolute;
     left: 7.5px;
@@ -25,7 +27,7 @@
     /*  could change  */
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 200px;
+    width: 150px;
     height: 1.5em;
     white-space: nowrap;
 }

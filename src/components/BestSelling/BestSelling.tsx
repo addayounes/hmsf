@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { getFlowers } from "../../redux/ducks/flowers";
+import { getBestSellingFlowers } from "../../redux/ducks/flowers";
 import Button from "../Button/Button";
 import ProductCard from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
 const BestSelling: React.FC = () => {
     const dispatch = useDispatch();
-    const flowers = useSelector((state: RootStateOrAny) => state.flowersReducer.flowers);
+    const flowers = useSelector((state: RootStateOrAny) => state.flowersReducer.bestSelling);
     useEffect(() => {
-        dispatch(getFlowers());
+        dispatch(getBestSellingFlowers());
     }, []);
     return (
         <section>
