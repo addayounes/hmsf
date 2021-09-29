@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
-import { NavLink, useLocation } from "react-router-dom";
+import { RootStateOrAny, useSelector } from "react-redux";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar: React.FC = () => {
     const [Scroll, setScroll] = useState(false);
+    const cartItems = useSelector((state: RootStateOrAny) => state.cartReducer.cartItems);
     const { pathname } = useLocation();
+    const history = useHistory();
 
     useEffect(() => {
         const checkScroll = (): void => {
@@ -39,9 +42,12 @@ const Navbar: React.FC = () => {
                     </ul>
                 </nav>
                 <div className='logo'>HMSF</div>
-                <div className='nav-cta'>
+                <div className='nav-cta split-between'>
                     <FaSearch />
-                    <FaShoppingCart />
+                    <div onClick={() => history.push("/cart")} className='split-center'>
+                        <span>{cartItems?.length}</span>
+                        <FaShoppingCart />
+                    </div>
                 </div>
             </div>
         </header>

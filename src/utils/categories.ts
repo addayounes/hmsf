@@ -4,7 +4,7 @@ import cat3 from "../assets/categories/cat3.jpeg";
 import cat4 from "../assets/categories/cat4.jpeg";
 import cat5 from "../assets/categories/cat5.jpeg";
 
-const categories: { title: string; image: any }[] = [
+const categories: { title: string; image: string }[] = [
     {
         title: "birthday",
         image: cat1,

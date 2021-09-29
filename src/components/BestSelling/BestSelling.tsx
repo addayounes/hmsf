@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { getBestSellingFlowers } from "../../redux/ducks/flowers";
 import Button from "../Button/Button";
-import ProductCard from "../ProductCard/ProductCard";
+import ProductCard, { ProductCardProps } from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
 const BestSelling: React.FC = () => {
     const dispatch = useDispatch();
-    const flowers = useSelector((state: RootStateOrAny) => state.flowersReducer.bestSelling);
+    const flowers: ProductCardProps["product"][] = useSelector(
+        (state: RootStateOrAny) => state.flowersReducer.bestSelling
+    );
     useEffect(() => {
         dispatch(getBestSellingFlowers());
     }, []);
@@ -20,10 +22,9 @@ const BestSelling: React.FC = () => {
                 </div>
 
                 <div className='best-selling-products '>
-                    {flowers &&
-                        flowers.map((flower: any, idx: number) => {
-                            return <ProductCard key={idx} product={flower} />;
-                        })}
+                    {flowers?.map((flower, idx: number) => {
+                        return <ProductCard key={idx} product={flower} />;
+                    })}
                 </div>
             </div>
         </section>

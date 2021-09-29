@@ -1,0 +1,32 @@
+.product-item {
+    padding: 0.5rem 0;
+}
+.product-item img {
+    max-width: 120px;
+    width: 12%;
+}
+.product-item > p:first-of-type {
+    font-weight: var(--fw-normal);
+    text-transform: capitalize;
+}
+.product-quantity {
+    margin: 0 2rem;
+}
+.product-quantity input {
+    margin: 0 0.75em;
+    width: 30px;
+    border: 1px solid var(--clr-grey);
+    text-align: center;
+    outline: none;
+}
+.product-quantity > div {
+    background-color: var(--clr-light-grey);
+    cursor: pointer;
+    padding: 0 0.35em;
+}
+.product-quantity > div:hover {
+    background-color: var(--clr-grey);
+}
+.product-item > svg {
+    cursor: pointer;
+}

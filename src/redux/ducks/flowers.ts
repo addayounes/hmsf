@@ -10,12 +10,12 @@ const SET_BEST_SELLING_FLOWERS: string = "SET_BEST_SELLING_FLOWERS";
 
 // sync actions
 
-const setFlowers = (flowers: ProductCardProps[]) => ({
+const setFlowers = (flowers: ProductCardProps["product"][]) => ({
     type: SET_FLOWERS,
     payload: flowers,
 });
 
-const setBestSellingFlowers = (flowers: ProductCardProps[]) => ({
+const setBestSellingFlowers = (flowers: ProductCardProps["product"][]) => ({
     type: SET_BEST_SELLING_FLOWERS,
     payload: flowers,
 });
@@ -23,18 +23,23 @@ const setBestSellingFlowers = (flowers: ProductCardProps[]) => ({
 // thunk async actions
 
 export const getFlowers = () => async (dispatch: Dispatch<{}>) => {
-    const flowers = (await getProducts()) as ProductCardProps[];
+    const flowers = (await getProducts()) as ProductCardProps["product"][];
     dispatch(setFlowers(flowers));
 };
 
 export const getBestSellingFlowers = () => async (dispatch: Dispatch<{}>) => {
-    const flowers = (await getProducts()) as ProductCardProps[];
+    const flowers = (await getProducts()) as ProductCardProps["product"][];
     dispatch(setBestSellingFlowers(flowers.slice(0, 3)));
 };
 
 interface FlowersState {
-    flowers: ProductCardProps[];
-    bestSelling: ProductCardProps[];
+    flowers: ProductCardProps["product"][] | null;
+    bestSelling: ProductCardProps["product"][] | null;
+}
+
+interface ActionType {
+    type: string;
+    payload: ProductCardProps["product"][];
 }
 
 const initialState = {
@@ -42,10 +47,7 @@ const initialState = {
     bestSelling: null,
 };
 
-const flowersReducer = (
-    state: FlowersState | any = initialState,
-    { type, payload }: { type: string; payload: any }
-) => {
+const flowersReducer = (state: FlowersState = initialState, { type, payload }: ActionType) => {
     switch (type) {
         case SET_FLOWERS:
             return { ...state, flowers: payload };

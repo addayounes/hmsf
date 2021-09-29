@@ -35,11 +35,12 @@
     font-weight: var(--fw-bold);
 }
 .product-card-content .product-card-add {
+    width: 35px;
+    height: 35px;
     font-size: var(--fz-l);
     font-weight: 300;
     background-color: var(--clr-primary-light);
     color: #fff;
-    padding: 0 0.35em;
     cursor: pointer;
 }
 .product-card-content .product-card-add:hover {

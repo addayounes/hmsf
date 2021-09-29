@@ -1,0 +1,17 @@
+.cart {
+    padding: 2em 0 0;
+}
+.cart h1 {
+    font-weight: var(--fw-normal);
+    margin-bottom: 1em;
+}
+.cart-items .product-item + div {
+    border-top: 1px solid var(--clr-grey);
+}
+.cart-items {
+    flex-basis: 70%;
+}
+.cart-payment--infos {
+    flex-basis: 30%;
+    background-color: var(--clr-light-grey);
+}
