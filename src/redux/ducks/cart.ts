@@ -1,9 +1,11 @@
 import { ProductCardProps } from "../../components/ProductCard/ProductCard";
 
+type flower = ProductCardProps["product"];
+
 const ADD_TO_CART: string = "ADD_TO_CART";
 const REMOVE_FROM_CART: string = "REMOVE_FROM_CART";
 
-export const addToCart = (item: ProductCardProps["product"]) => ({
+export const addToCart = (item: flower) => ({
     type: ADD_TO_CART,
     payload: item,
 });
@@ -15,8 +17,8 @@ export const removeFromCart = (id: string) => ({
 
 // reducer
 
-export interface CartState {
-    cartItems: ProductCardProps["product"][];
+interface CartState {
+    cartItems: flower[];
 }
 
 const initialState = {

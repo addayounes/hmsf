@@ -1,17 +1,17 @@
-import React, { useEffect } from "react";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { addFlowers } from "../../firebase/db";
 import { getFlowers } from "../../redux/ducks/flowers";
+import { RootState } from "../../redux/store";
 import Filter from "../../components/Filter/Filter";
-import ProductCard, { ProductCardProps } from "../../components/ProductCard/ProductCard";
+import ProductCard from "../../components/ProductCard/ProductCard";
 import Sort from "../../components/Sort/Sort";
 import "./Shop.css";
 
 const Shop: React.FC = () => {
+    const [, forceUpdate] = useReducer((x) => x + 1, 0);
+    const flowers = useSelector((state: RootState) => state.flowersReducer.flowers);
     const dispatch = useDispatch();
-    const flowers: ProductCardProps["product"][] = useSelector(
-        (state: RootStateOrAny) => state.flowersReducer.flowers
-    );
     useEffect(() => {
         dispatch(getFlowers());
 
@@ -28,8 +28,8 @@ const Shop: React.FC = () => {
             <div className='shop-header'>
                 <div id='container' className='split-between'>
                     <Filter />
-                    <div>{flowers && flowers.length} Result</div>
-                    <Sort />
+                    <div>{flowers?.length} Result</div>
+                    <Sort forceUpdate={forceUpdate} />
                 </div>
             </div>
             <div className='store-items' id='container'>

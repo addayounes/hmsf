@@ -1,6 +1,9 @@
 .cart {
     padding: 2em 0 0;
 }
+.cart > div {
+    align-items: flex-start;
+}
 .cart h1 {
     font-weight: var(--fw-normal);
     margin-bottom: 1em;
@@ -13,5 +16,26 @@
 }
 .cart-payment--infos {
     flex-basis: 30%;
+    padding: 0.5em 1em;
+    border-radius: 15px;
     background-color: var(--clr-light-grey);
+    margin-left: 2rem;
+}
+.cart-payment--infos > div {
+    padding: 1rem 0;
+}
+.cart-payment--infos > div + div {
+    border-top: 1px solid var(--clr-grey);
+}
+.cart-payment--infos .total {
+    font-size: var(--fz-l);
+}
+.cart-payment--infos > div > p:last-child {
+    font-weight: var(--fw-normal);
+}
+.cart-payment--infos .subtotal {
+    font-size: var(--fz-s);
+}
+.cart-payment--infos .shipping {
+    font-size: var(--fz-s);
 }

@@ -1,15 +1,23 @@
 import React, { useEffect } from "react";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getBestSellingFlowers } from "../../redux/ducks/flowers";
+import { RootState } from "../../redux/store";
 import Button from "../Button/Button";
 import ProductCard, { ProductCardProps } from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
+type flowers = ProductCardProps["product"][];
+
 const BestSelling: React.FC = () => {
     const dispatch = useDispatch();
-    const flowers: ProductCardProps["product"][] = useSelector(
-        (state: RootStateOrAny) => state.flowersReducer.bestSelling
-    );
+    const flowers: flowers = useSelector((state: RootState) => state.flowersReducer.bestSelling);
+
+    const renderBestSellingFlowers = (): JSX.Element[] => {
+        return flowers?.map((flower, idx: number) => {
+            return <ProductCard key={idx} product={flower} />;
+        });
+    };
+
     useEffect(() => {
         dispatch(getBestSellingFlowers());
     }, []);
@@ -21,11 +29,7 @@ const BestSelling: React.FC = () => {
                     <Button label='see more' variant='secondary' />
                 </div>
 
-                <div className='best-selling-products '>
-                    {flowers?.map((flower, idx: number) => {
-                        return <ProductCard key={idx} product={flower} />;
-                    })}
-                </div>
+                <div className='best-selling-products '>{renderBestSellingFlowers()}</div>
             </div>
         </section>
     );

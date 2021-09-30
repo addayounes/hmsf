@@ -1,3 +1,6 @@
+.sort-wrapper {
+    position: relative;
+}
 .sort,
 .filter {
     padding: 0.3em 0.5em;
@@ -15,4 +18,22 @@
     background-color: var(--clr-light-grey);
     cursor: pointer;
     transition: 200ms ease-out;
+}
+.sort-options {
+    position: absolute;
+    right: 0;
+    z-index: 99;
+    box-shadow: 0 0 15px -5px rgb(163, 163, 163);
+}
+.sort--option {
+    padding: 0.3em;
+    padding-left: 0.5em;
+    font-size: var(--fz-s);
+    width: 180px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.sort--option:hover {
+    background-color: var(--clr-light-grey);
 }
