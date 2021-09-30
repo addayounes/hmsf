@@ -1,21 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
-import { ProductCardProps } from "../../components/ProductCard/ProductCard";
 import ProductItem from "../../components/ProductItem/ProductItem";
 import { RootState } from "../../redux/store";
 import "./Cart.css";
 
-type flowers = ProductCardProps["product"][];
-
 const Cart: React.FC = () => {
     const shippingFee = 600;
-    const cartItems: flowers = useSelector((state: RootState) => state.cartReducer.cartItems);
+    const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
-    const renderCartItems = (): JSX.Element[] => {
-        return cartItems?.map((item, idx) => <ProductItem key={idx} product={item} />);
-    };
     const calcSubTotal = useCallback((): number => {
-        let subtotal: number = 0;
+        let subtotal = 0;
         cartItems.forEach((el) => (subtotal += el.price));
         return subtotal;
     }, [cartItems]);
@@ -23,6 +17,10 @@ const Cart: React.FC = () => {
     const calcTotal = useCallback((): number => {
         return calcSubTotal() + shippingFee;
     }, [cartItems]);
+
+    const renderCartItems = (): JSX.Element[] => {
+        return cartItems?.map((item, idx) => <ProductItem key={idx} product={item} />);
+    };
 
     return (
         <section>

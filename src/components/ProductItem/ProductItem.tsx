@@ -27,8 +27,10 @@ const ProductItem: React.FC<ProductCardProps> = ({ product }) => {
 
     return (
         <div className='product-item split-between'>
-            <img src={product.image} alt='flower' />
-            <p>{product.title}</p>
+            <div className='item--primary-infos'>
+                <img src={product.image} alt='flower' />
+                <p>{product.title}</p>
+            </div>
             <div className='product-quantity split-between'>
                 <div onClick={decrementQuantity} className='split-center'>
                     -

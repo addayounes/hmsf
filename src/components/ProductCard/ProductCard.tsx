@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { FaCrown, FaCheck } from "react-icons/fa";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
-import { addToCart, CartState } from "../../redux/ducks/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "../../redux/ducks/cart";
+import { RootState } from "../../redux/store";
 import "./ProductCard.css";
 
 export interface ProductCardProps {
@@ -16,9 +17,7 @@ export interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const dispatch = useDispatch();
-    const cartItems: CartState["cartItems"] = useSelector(
-        (state: RootStateOrAny) => state.cartReducer.cartItems
-    );
+    const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
     const isInCart = (): boolean => {
         if (cartItems.indexOf(product) > -1) return true;

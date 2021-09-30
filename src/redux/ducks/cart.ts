@@ -17,18 +17,20 @@ export const removeFromCart = (id: string) => ({
 
 // reducer
 
+interface SortActionType {
+    type: string;
+    payload: flower & string;
+}
+
 interface CartState {
     cartItems: flower[];
 }
 
-const initialState = {
+const initialState: CartState = {
     cartItems: [],
 };
 
-const cartReducer = (
-    state: CartState = initialState,
-    { type, payload }: { type: string; payload: any }
-) => {
+const cartReducer = (state = initialState, { type, payload }: SortActionType) => {
     switch (type) {
         case ADD_TO_CART:
             return { ...state, cartItems: [...state.cartItems, payload] };

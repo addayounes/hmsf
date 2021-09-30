@@ -6,11 +6,9 @@ import Button from "../Button/Button";
 import ProductCard, { ProductCardProps } from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
-type flowers = ProductCardProps["product"][];
-
 const BestSelling: React.FC = () => {
     const dispatch = useDispatch();
-    const flowers: flowers = useSelector((state: RootState) => state.flowersReducer.bestSelling);
+    const flowers = useSelector((state: RootState) => state.flowersReducer.bestSelling);
 
     const renderBestSellingFlowers = (): JSX.Element[] => {
         return flowers?.map((flower, idx: number) => {

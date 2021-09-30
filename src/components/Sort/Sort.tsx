@@ -10,7 +10,7 @@ interface SortOptions {
     action: () => void;
 }
 
-const Sort: React.FC<{ forceUpdate: any }> = ({ forceUpdate }) => {
+const Sort: React.FC<{ forceUpdate: React.DispatchWithoutAction }> = ({ forceUpdate }) => {
     const dispatch = useDispatch();
     const [showSortOptions, setShowSortOptions] = useState(false);
     const flowers = useSelector((state: RootState) => state.flowersReducer.flowers);

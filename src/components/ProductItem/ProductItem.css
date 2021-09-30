@@ -1,13 +1,21 @@
 .product-item {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
+    background-color: #fff;
 }
 .product-item img {
     max-width: 120px;
     width: 12%;
 }
-.product-item > p:first-of-type {
+.product-item > div > p:first-of-type {
     font-weight: var(--fw-normal);
     text-transform: capitalize;
+}
+.item--primary-infos {
+    display: flex;
+    align-items: center;
+}
+.item--primary-infos > p:first-of-type {
+    margin-left: 1rem;
 }
 .product-quantity {
     margin: 0 2rem;
