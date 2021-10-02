@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBestSellingFlowers } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
 import Button from "../Button/Button";
-import ProductCard, { ProductCardProps } from "../ProductCard/ProductCard";
+import ProductCard from "../ProductCard/ProductCard";
 import "./BestSelling.css";
 
 const BestSelling: React.FC = () => {

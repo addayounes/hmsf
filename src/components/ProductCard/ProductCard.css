@@ -4,6 +4,8 @@
 .product-card-img {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
+    background-color: var(--clr-grey);
 }
 
 .product-card-img > span {

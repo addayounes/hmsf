@@ -1,6 +1,5 @@
 import React from "react";
 import "./Button.css";
-
 interface ButtonProps {
     variant?: string;
     label: string;

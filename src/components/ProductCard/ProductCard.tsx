@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FaCrown, FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { addToCart } from "../../redux/ducks/cart";
 import { RootState } from "../../redux/store";
 import "./ProductCard.css";
@@ -16,6 +17,7 @@ export interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
@@ -29,13 +31,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         dispatch(addToCart(product));
     };
 
+    const showFlowerDetailsPage = (): void => {
+        history.push(`/store/${product.id}`);
+    };
+
     useEffect(() => {
         isInCart();
     }, []);
 
     return (
         <div className='product-card'>
-            <div className='product-card-img'>
+            <div onClick={showFlowerDetailsPage} className='product-card-img'>
                 <img src={product.image} alt='flower' />
                 {product.bestSelling && (
                     <span>
