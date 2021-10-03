@@ -32,7 +32,7 @@ const sortReducer = (
     switch (action.type) {
         case SORT_BY_NAME:
             return {
-                flowers: action.payload.sort((a, b) => (a.title > b.title ? 1 : -1)),
+                flowers: action.payload.sort((a, b) => a.title.localeCompare(b.title)),
             };
         case SORT_BY_PRICE_ASC:
             return {

@@ -33,3 +33,10 @@
     font-weight: var(--fw-normal);
     text-transform: capitalize;
 }
+.flower-details__quantity-wrapper {
+    position: relative;
+    padding: 1.5rem !important;
+}
+.flower-details__quantity-wrapper .product-quantity {
+    left: 1rem;
+}

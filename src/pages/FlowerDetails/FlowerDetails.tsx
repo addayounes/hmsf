@@ -55,7 +55,7 @@ const FlowerDetails: React.FC = () => {
                         <div>
                             <p>{selectedFlower?.price} DA</p>
                         </div>
-                        <div>
+                        <div className='flower-details__quantity-wrapper'>
                             <Quantity Quantity={detailsQuantity} setQuantity={setDetailsQuantity} />
                         </div>
                         <div>

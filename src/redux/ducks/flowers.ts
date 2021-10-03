@@ -10,6 +10,7 @@ type flower = ProductCardProps["product"];
 const SET_FLOWERS: string = "SET_FLOWERS";
 const SET_BEST_SELLING_FLOWERS: string = "SET_BEST_SELLING_FLOWERS";
 const SET_SELECTED_FLOWER: string = "SET_SELECTED_FLOWER";
+const SET_SEARCH: string = "SET_SEARCH";
 
 // sync actions
 
@@ -26,6 +27,11 @@ const setBestSellingFlowers = (flowers: flowers) => ({
 export const seSelectedFlower = (flower: flower | null) => ({
     type: SET_SELECTED_FLOWER,
     payload: flower,
+});
+
+export const setSearch = (search: string) => ({
+    type: SET_SEARCH,
+    payload: search,
 });
 
 // thunk async actions
@@ -47,19 +53,21 @@ export const getSelectedFlower = (id: string) => async (dispatch: Dispatch) => {
 
 interface ActionType {
     type: string;
-    payload: flowers & flower & null;
+    payload: flowers & flower & string & null;
 }
 
 interface FlowersState {
     flowers: flowers;
     bestSelling: flowers;
     selectedFlower: flower | null;
+    search: string;
 }
 
 const initialState: FlowersState = {
     flowers: [],
     bestSelling: [],
     selectedFlower: null,
+    search: "",
 };
 
 const flowersReducer = (state = initialState, { type, payload }: ActionType) => {
@@ -70,6 +78,8 @@ const flowersReducer = (state = initialState, { type, payload }: ActionType) => 
             return { ...state, bestSelling: payload };
         case SET_SELECTED_FLOWER:
             return { ...state, selectedFlower: payload };
+        case SET_SEARCH:
+            return { ...state, search: payload };
 
         default:
             return state;

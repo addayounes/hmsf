@@ -2,9 +2,9 @@ header {
     position: sticky;
     top: 0;
     width: 100%;
-    padding: 0.5rem 0;
     transition: 200ms ease;
     z-index: 100;
+    height: 70px;
 }
 header.scrolled {
     background-color: #fff !important;
@@ -14,7 +14,9 @@ header.scrolled {
 header.home-position {
     position: fixed !important;
 }
-
+.navbar {
+    position: relative;
+}
 .navbar nav ul {
     list-style: none;
 }
@@ -45,6 +47,9 @@ header.home-position {
 .navbar .logo {
     font-size: var(--fz-xl);
     font-weight: 300;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .navbar .nav-cta {
     font-size: 1.3125rem;
@@ -70,4 +75,25 @@ header.home-position {
     color: #fff;
     z-index: 500;
     user-select: none;
+}
+.search-input {
+    padding: 0.5em;
+    width: 0px;
+    opacity: 0;
+    border: 1px solid var(--clr-grey);
+    border-radius: 0;
+    outline: none;
+    animation: expand-search-bar 200ms ease forwards;
+}
+.search-input:focus {
+    border: 1px solid var(--clr-primary);
+}
+
+@keyframes expand-search-bar {
+    to {
+        display: block;
+        width: 200px;
+        opacity: 0.75;
+        transition: 0.15s ease-out;
+    }
 }

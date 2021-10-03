@@ -17,12 +17,16 @@ const ProductItem: React.FC<ProductCardProps> = ({ product }) => {
     return (
         <div className='product-item split-between'>
             <div className='item--primary-infos'>
-                <img src={product.image} alt='flower' />
+                <div className='primary-infos-img'>
+                    <img src={product.image} alt='flower' />
+                </div>
                 <p>{product.title}</p>
             </div>
             <Quantity Quantity={quantity} setQuantity={setQuantity} />
-            <p>{product.price * quantity} DA</p>
-            <AiOutlineClose onClick={handleRemovingFromCart} />
+            <div className='procuts-item--right split-between'>
+                <p>{product.price * quantity} DA</p>
+                <AiOutlineClose onClick={handleRemovingFromCart} />
+            </div>
         </div>
     );
 };

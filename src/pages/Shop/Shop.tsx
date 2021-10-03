@@ -11,7 +11,9 @@ import "./Shop.css";
 const Shop: React.FC = () => {
     const [, forceUpdate] = useReducer((x) => x + 1, 0);
     const flowers = useSelector((state: RootState) => state.flowersReducer.flowers);
+    const search = useSelector((state: RootState) => state.flowersReducer.search);
     const dispatch = useDispatch();
+
     useEffect(() => {
         dispatch(getFlowers());
 
@@ -33,9 +35,14 @@ const Shop: React.FC = () => {
                 </div>
             </div>
             <div className='store-items' id='container'>
-                {flowers?.map((flower, idx: number) => {
-                    return <ProductCard key={idx} product={flower} />;
-                })}
+                {flowers
+                    ?.filter((el) => {
+                        if (search === "") return el;
+                        else if (el.title.toLowerCase().includes(search.toLowerCase())) return el;
+                    })
+                    .map((flower, idx: number) => {
+                        return <ProductCard key={idx} product={flower} />;
+                    })}
             </div>
         </section>
     );
