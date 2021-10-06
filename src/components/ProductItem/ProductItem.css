@@ -10,6 +10,7 @@
 .item--primary-infos {
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .procuts-item--right {
     position: absolute;

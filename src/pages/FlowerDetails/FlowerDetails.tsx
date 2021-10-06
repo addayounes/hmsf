@@ -19,7 +19,8 @@ const FlowerDetails: React.FC = () => {
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
     const isInCart = (): boolean => {
-        if (cartItems.indexOf(selectedFlower as flower) > -1) return true;
+        const cartItem = cartItems.find((el) => el.id === selectedFlower?.id);
+        if (cartItem !== undefined) return true;
         return false;
     };
 
@@ -59,7 +60,10 @@ const FlowerDetails: React.FC = () => {
                             <Quantity Quantity={detailsQuantity} setQuantity={setDetailsQuantity} />
                         </div>
                         <div>
-                            <Button onClick={handleAddingToCart} label='Add to cart' />
+                            <Button
+                                onClick={handleAddingToCart}
+                                label={isInCart() ? "in cart" : "Add to cart"}
+                            />
                         </div>
                     </div>
                 </div>

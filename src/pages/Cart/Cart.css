@@ -20,6 +20,8 @@
     border-radius: 15px;
     background-color: var(--clr-light-grey);
     margin-left: 2rem;
+    position: sticky;
+    top: calc(70px + 2rem);
 }
 .cart-payment--infos > div {
     padding: 1rem 0;

@@ -1,0 +1,116 @@
+.filter-panel {
+    margin: 1.5rem 0 -1.5rem;
+    border: 1px solid var(--clr-grey);
+    position: relative;
+}
+.filter-panel > div {
+    flex-basis: 100%;
+}
+.filter-subpanel {
+    padding: 1em;
+}
+.filter-subpanel > p {
+    font-weight: var(--fw-normal);
+    margin-bottom: 0.5rem;
+}
+.price-input {
+    position: relative;
+}
+.price-inputs > div > input {
+    display: block;
+    outline: none;
+    border: 1px solid var(--clr-grey);
+    padding: 0.75em;
+    width: 100%;
+}
+.price-inputs > div + div {
+    margin-top: 0.5rem;
+}
+.price-inputs > div > span {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.5;
+    user-select: none;
+}
+.filter-best-sellings-wrapper {
+    font-weight: var(--fw-normal);
+    margin: 1em 0 0;
+}
+.filter-best-sellings {
+    width: 30px;
+    height: 10px;
+    background-color: var(--clr-grey);
+    border-radius: 100px;
+    cursor: pointer;
+    position: relative;
+    transition: 200ms ease;
+}
+.filter-best-sellings::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 100px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--clr-primary);
+    transition: 200ms ease;
+}
+.filter-best-sellings.active-best-sellings {
+    background-color: var(--clr-primary);
+}
+.filter-best-sellings.active-best-sellings::before {
+    left: 100%;
+    transform: translate(-100%, -50%);
+}
+
+.apply-filters-icon {
+    position: absolute;
+    right: -1rem;
+    top: -1rem;
+    padding: 0.65em;
+    width: 35px;
+    height: 35px;
+    background-color: var(--clr-primary);
+    border-radius: 100px;
+    cursor: pointer;
+    fill: #fff;
+    transition: 200ms ease;
+}
+.apply-filters-icon:hover {
+    background-color: var(--clr-primary-dark);
+    transition: 200ms ease;
+}
+.reset-filters-icon {
+    left: -1rem;
+    background-color: var(--clr-grey);
+}
+.reset-filters-icon:hover {
+    filter: brightness(0.9);
+    background-color: var(--clr-grey);
+    transition: 200ms ease;
+}
+
+/*    filter css transition     */
+
+.filter-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+.filter-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 350ms;
+}
+.filter-exit {
+    opacity: 1;
+    transform: translateY(0);
+}
+.filter-exit-active {
+    opacity: 0;
+    transform: translateY(-5px);
+    transition: opacity 300ms;
+}

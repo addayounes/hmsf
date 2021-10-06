@@ -22,7 +22,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
     const isInCart = (): boolean => {
-        if (cartItems.indexOf(product) > -1) return true;
+        const cartItem = cartItems.find((el) => el.id === product.id);
+        if (cartItem !== undefined) return true;
         return false;
     };
 
