@@ -40,7 +40,7 @@
 }
 .filter-best-sellings {
     width: 30px;
-    height: 10px;
+    height: 15px;
     background-color: var(--clr-grey);
     border-radius: 100px;
     cursor: pointer;
@@ -49,21 +49,21 @@
 }
 .filter-best-sellings::before {
     content: "";
-    width: 15px;
-    height: 15px;
+    width: 11.5px;
+    height: 11.5px;
     border-radius: 100px;
     position: absolute;
-    left: 0;
+    left: 2px;
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--clr-primary);
+    background-color: #fff;
     transition: 200ms ease;
 }
 .filter-best-sellings.active-best-sellings {
     background-color: var(--clr-primary);
 }
 .filter-best-sellings.active-best-sellings::before {
-    left: 100%;
+    left: calc(100% - 2px);
     transform: translate(-100%, -50%);
 }
 

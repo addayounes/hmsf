@@ -1,14 +1,13 @@
 import app from "./config";
 import { getFirestore, collection, getDocs, getDoc, doc, addDoc } from "firebase/firestore";
 import { CollectionReference, DocumentData, DocumentReference } from "firebase/firestore";
-import { ProductCardProps } from "../components/ProductCard/ProductCard";
 
 type DOC = DocumentReference<DocumentData>;
 type COLL = CollectionReference<DocumentData>;
-type FLOWER = ProductCardProps["product"];
 
 const db = getFirestore(app);
 const flowersCollection: COLL = collection(db, "products");
+const blogsCollection: COLL = collection(db, "blogs");
 
 export const getProducts = async () => {
     let products: Array<{}> = [];
@@ -32,8 +31,18 @@ export const getProductDetails = async (id: string) => {
     return product;
 };
 
-export const addFlowers = async (flower: Object) => {
-    await addDoc(flowersCollection, flower);
+export const fetchBlogs = async () => {
+    let blogs: Array<{}> = [];
+
+    const res = await getDocs(blogsCollection);
+
+    blogs = res.docs.map((doc) => doc.data());
+
+    return blogs;
+};
+
+export const addFlowers = async (blog: Object) => {
+    await addDoc(blogsCollection, blog);
 };
 
 export default db;

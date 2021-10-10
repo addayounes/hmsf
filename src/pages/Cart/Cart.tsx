@@ -5,8 +5,8 @@ import { RootState } from "../../redux/store";
 import "./Cart.css";
 
 const Cart: React.FC = () => {
-    const shippingFee = 600;
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
+    const shippingFee = 600;
 
     const calcSubTotal = useCallback((): number => {
         let subtotal = 0;

@@ -30,13 +30,15 @@ const Shop: React.FC = () => {
 
     useEffect(() => {
         dispatch(getFlowers());
-
-        // addFlowers({
-        //     title: "marmalade skies bouquet",
-        //     price: 2500,
-        //     bestSelling: false,
-        //     image: "https://i.ibb.co/R4ntkdm/cat2.jpg",
-        // });
+        [1, 2, 1, 1, 1, 1].forEach((el) => {
+            // addFlowers({
+            //     title: "The Big Bloom—How Flowering Plants Changed the World",
+            //     content: "content",
+            //     image: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/close-up-of-tulips-blooming-in-field-royalty-free-image-1584131603.jpg",
+            //     date: "2021-10-10T18:25:33.144Z",
+            //     author: "maria safia ferdous",
+            // });
+        });
     }, []);
     return (
         <section className='shop'>

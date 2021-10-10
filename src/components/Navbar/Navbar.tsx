@@ -46,10 +46,14 @@ const Navbar: React.FC = () => {
                             <NavLink to='/store'>flowers</NavLink>
                         </li>
                         <li>
-                            <NavLink to='blog'>blog</NavLink>
+                            <NavLink exact to='blog'>
+                                blog
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink to='contact'>contact</NavLink>
+                            <NavLink exact to='contact'>
+                                contact
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>

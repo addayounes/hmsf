@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ScrollToTop from "./utils/ScrollToTop";
 import Cart from "./pages/Cart/Cart";
 import FlowerDetails from "./pages/FlowerDetails/FlowerDetails";
+import Blog from "./pages/Blog/Blog";
 
 function App() {
     return (
@@ -15,9 +16,10 @@ function App() {
                 <Navbar />
                 <Switch>
                     <Route exact path='/' component={Home} />
-                    <Route path='/cart' component={Cart} />
                     <Route exact path='/store' component={Shop} />
                     <Route exact path='/store/:flowerID' component={FlowerDetails} />
+                    <Route path='/cart' component={Cart} />
+                    <Route path='/blog' component={Blog} />
                 </Switch>
             </BrowserRouter>
         </div>
