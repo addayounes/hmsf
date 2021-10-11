@@ -57,7 +57,11 @@ const Navbar: React.FC = () => {
                         </li>
                     </ul>
                 </nav>
-                <div className='logo'>HMSF</div>
+                <div className='logo'>
+                    <NavLink exact to='/'>
+                        HMSF
+                    </NavLink>
+                </div>
                 <div className='nav-cta split-between'>
                     <FaSearch onClick={() => setShowSearch((v) => !v)} />
                     {ShowSearch && (

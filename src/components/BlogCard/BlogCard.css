@@ -1,0 +1,47 @@
+.blog-card {
+    margin: 0.5rem;
+    transition: 250ms ease;
+}
+.blog-card:hover {
+    /*   hover effect    */
+    transition: 250ms ease;
+}
+.card-img {
+    height: 200px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card-infos {
+    margin: 1rem 0;
+}
+.card-infos > div:first-child {
+    margin-bottom: 0.25rem;
+}
+.card-infos > div:first-child > p {
+    font-size: var(--fz-s);
+    text-transform: capitalize;
+    opacity: 0.85;
+}
+
+.card-infos .card-title {
+    font-weight: var(--fw-bold);
+    text-transform: capitalize;
+}
+.card-infos .card-cta {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: var(--fw-bold);
+    color: var(--clr-primary);
+    text-transform: capitalize;
+    margin-top: 0.5rem;
+}
+.card-infos .card-cta > p {
+    cursor: pointer;
+    width: fit-content;
+}
+.card-infos .card-cta:hover {
+    color: var(--clr-primary-dark);
+}

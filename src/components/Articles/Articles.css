@@ -1,0 +1,16 @@
+.articles {
+    margin: 1rem 0;
+}
+.articles h1 {
+    font-size: var(--fz-xl);
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+.articles-data {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.articles-data > div {
+    flex-basis: calc(33.33% - 1rem);
+}

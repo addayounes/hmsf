@@ -44,12 +44,19 @@ header.home-position {
     height: 4px;
     background-color: var(--clr-primary);
 }
+.navbar .logo > a {
+    color: var(--clr-text);
+    text-decoration: none;
+}
 .navbar .logo {
     font-size: var(--fz-xl);
     font-weight: 300;
+
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    user-select: none;
+    cursor: pointer;
 }
 .navbar .nav-cta {
     font-size: 1.3125rem;
