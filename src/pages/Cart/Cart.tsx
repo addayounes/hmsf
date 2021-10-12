@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector } from "react-redux";
-import ProductItem from "../../components/ProductItem/ProductItem";
 import { RootState } from "../../redux/store";
+import ProductItem from "../../components/ProductItem/ProductItem";
 import "./Cart.css";
 
 const Cart: React.FC = () => {
@@ -19,7 +19,7 @@ const Cart: React.FC = () => {
     }, [cartItems]);
 
     const renderCartItems = (): JSX.Element[] => {
-        return cartItems?.map((item, idx) => <ProductItem key={idx} product={item} />);
+        return cartItems?.map((item, idx) => <ProductItem key={idx} {...item} />);
     };
 
     return (

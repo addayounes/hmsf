@@ -1,41 +1,44 @@
-import { ProductCardProps } from "../../components/ProductCard/ProductCard";
+import ProductCardType from "../../types/flower";
 
-type flower = ProductCardProps["product"];
+const ADD_TO_CART = "ADD_TO_CART";
+const REMOVE_FROM_CART = "REMOVE_FROM_CART";
 
-const ADD_TO_CART: string = "ADD_TO_CART";
-const REMOVE_FROM_CART: string = "REMOVE_FROM_CART";
+// actions types
 
-export const addToCart = (item: flower) => ({
+type CartActions =
+    | { type: "ADD_TO_CART"; payload: ProductCardType }
+    | { type: "REMOVE_FROM_CART"; payload: string };
+
+// actions
+
+export const addToCart = (item: ProductCardType): CartActions => ({
     type: ADD_TO_CART,
     payload: item,
 });
 
-export const removeFromCart = (id: string) => ({
+export const removeFromCart = (id: string): CartActions => ({
     type: REMOVE_FROM_CART,
     payload: id,
 });
 
 // reducer
-
-interface SortActionType {
-    type: string;
-    payload: flower & string;
-}
-
 interface CartState {
-    cartItems: flower[];
+    cartItems: ProductCardType[];
 }
 
 const initialState: CartState = {
     cartItems: [],
 };
 
-const cartReducer = (state = initialState, { type, payload }: SortActionType) => {
-    switch (type) {
+const cartReducer = (state = initialState, action: CartActions): CartState => {
+    switch (action.type) {
         case ADD_TO_CART:
-            return { ...state, cartItems: [...state.cartItems, payload] };
+            return { ...state, cartItems: [...state.cartItems, action.payload] };
         case REMOVE_FROM_CART:
-            return { ...state, cartItems: state.cartItems.filter((el) => el.id !== payload) };
+            return {
+                ...state,
+                cartItems: state.cartItems.filter((el) => el.id !== action.payload),
+            };
         default:
             return state;
     }

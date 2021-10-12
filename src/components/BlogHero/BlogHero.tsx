@@ -1,23 +1,19 @@
 import React from "react";
-import { BlogCardProps } from "../BlogCard/BlogCard";
 import toValidDate from "../../utils/toValidDate";
+import BlogCardType from "../../types/blog";
 import "./BlogHero.css";
 
-interface BlogHeroProps {
-    blog: BlogCardProps;
-}
-
-const BlogHero: React.FC<BlogHeroProps> = ({ blog }) => {
-    const validBlogDate = toValidDate(blog.date);
+const BlogHero: React.FC<BlogCardType> = (props) => {
+    const validBlogDate = toValidDate(props.date);
     return (
         <section className='split-center blog-hero'>
-            <div className='blog-hero-img' style={{ backgroundImage: `url(${blog.image})` }}></div>
+            <div className='blog-hero-img' style={{ backgroundImage: `url(${props.image})` }}></div>
             <div className='blog-hero-content split-center'>
                 <div className='blog-hero-content--wrapper'>
                     <p>
-                        {validBlogDate} - {blog.author}
+                        {validBlogDate} - {props.author}
                     </p>
-                    <h1>{blog.title}</h1>
+                    <h1>{props.title}</h1>
                     <p>read article</p>
                 </div>
             </div>

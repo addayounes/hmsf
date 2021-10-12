@@ -1,14 +1,7 @@
 import React from "react";
 import toValidDate from "../../utils/toValidDate";
+import BlogCardProps from "../../types/blog";
 import "./BlogCard.css";
-
-export interface BlogCardProps {
-    title: string;
-    content: string;
-    image: string;
-    date: string;
-    author: string;
-}
 
 const BlogCard: React.FC<BlogCardProps> = (props) => {
     const validBlogDate = toValidDate(props.date);

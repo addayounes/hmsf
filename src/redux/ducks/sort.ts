@@ -1,6 +1,6 @@
-import { ProductCardProps } from "../../components/ProductCard/ProductCard";
+import ProductCardType from "../../types/flower";
 
-type flowers = ProductCardProps["product"][];
+type flowers = ProductCardType[];
 
 interface SortState {
     flowers: flowers;
@@ -25,10 +25,12 @@ export const sortByPriceDesc = (flowers: flowers) => ({
     payload: flowers,
 });
 
-const sortReducer = (
-    state: SortState = { flowers: [] },
-    action: { type: string; payload: flowers }
-) => {
+interface SortActions {
+    type: string;
+    payload: flowers;
+}
+
+const sortReducer = (state: SortState = { flowers: [] }, action: SortActions) => {
     switch (action.type) {
         case SORT_BY_NAME:
             return {

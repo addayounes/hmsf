@@ -24,7 +24,7 @@ const Shop: React.FC = () => {
                 else if (el.title.toLowerCase().includes(search.toLowerCase())) return el;
             })
             .map((flower, idx: number) => {
-                return <ProductCard key={idx} product={flower} />;
+                return <ProductCard key={idx} {...flower} />;
             });
     };
 

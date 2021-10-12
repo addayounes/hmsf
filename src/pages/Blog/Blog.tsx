@@ -19,7 +19,7 @@ const Blog: React.FC<BlogProps> = ({}) => {
     return (
         <section>
             <div className='blog' id='container'>
-                <BlogHero blog={mainBlog} />
+                <BlogHero {...mainBlog} />
                 <Articles title='trending' data={trendingBlogs} />
                 <Articles title='all articles' data={blogs} />
             </div>

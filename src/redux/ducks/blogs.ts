@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { fetchBlogs } from "../../firebase/db";
-import { BlogCardProps } from "../../components/BlogCard/BlogCard";
+import BlogCard from "../../types/blog";
 
 const SET_BLOGS = "SET_BLOGS";
 const SET_MAIN_BLOG = "SET_MAIN_BLOG";
@@ -9,23 +9,23 @@ const SET_TRENDING_BLOGS = "SET_TRENDING_BLOGS";
 // actions type
 
 type BlogActions =
-    | { type: "SET_BLOGS"; payload: BlogCardProps[] }
-    | { type: "SET_MAIN_BLOG"; payload: BlogCardProps }
-    | { type: "SET_TRENDING_BLOGS"; payload: BlogCardProps[] };
+    | { type: "SET_BLOGS"; payload: BlogCard[] }
+    | { type: "SET_MAIN_BLOG"; payload: BlogCard }
+    | { type: "SET_TRENDING_BLOGS"; payload: BlogCard[] };
 
 // syc actions
 
-const setBlogs = (blogs: BlogCardProps[]): BlogActions => ({
+const setBlogs = (blogs: BlogCard[]): BlogActions => ({
     type: SET_BLOGS,
     payload: blogs,
 });
 
-const setMainBlog = (blog: BlogCardProps): BlogActions => ({
+const setMainBlog = (blog: BlogCard): BlogActions => ({
     type: SET_MAIN_BLOG,
     payload: blog,
 });
 
-const setTrendingBlogs = (blog: BlogCardProps[]): BlogActions => ({
+const setTrendingBlogs = (blog: BlogCard[]): BlogActions => ({
     type: SET_TRENDING_BLOGS,
     payload: blog,
 });
@@ -33,7 +33,7 @@ const setTrendingBlogs = (blog: BlogCardProps[]): BlogActions => ({
 // async actions
 
 export const getBlogs = () => async (dispatch: Dispatch) => {
-    const blogsRes = (await fetchBlogs()) as BlogCardProps[];
+    const blogsRes = (await fetchBlogs()) as BlogCard[];
     const trendingBlogs = blogsRes.slice(0, 3);
 
     dispatch(setBlogs(blogsRes));
@@ -42,13 +42,13 @@ export const getBlogs = () => async (dispatch: Dispatch) => {
 };
 
 interface BlogsState {
-    blogs: BlogCardProps[];
-    mainBlog: BlogCardProps;
-    trendingBlogs: BlogCardProps[];
+    blogs: BlogCard[];
+    mainBlog: BlogCard;
+    trendingBlogs: BlogCard[];
 }
 const initialState: BlogsState = {
     blogs: [],
-    mainBlog: <BlogCardProps>{},
+    mainBlog: <BlogCard>{},
     trendingBlogs: [],
 };
 

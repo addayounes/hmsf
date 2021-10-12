@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import Button from "../../components/Button/Button";
-import { ProductCardProps } from "../../components/ProductCard/ProductCard";
 import Quantity from "../../components/Quantity/Quantity";
+import ProductCardType from "../../types/flower";
+import isInCart from "../../utils/isInCart";
 import { addToCart } from "../../redux/ducks/cart";
 import { getSelectedFlower, seSelectedFlower } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
 import "./FlowerDetails.css";
-
-type flower = ProductCardProps["product"];
 
 const FlowerDetails: React.FC = () => {
     const dispatch = useDispatch();
@@ -18,15 +17,9 @@ const FlowerDetails: React.FC = () => {
     const selectedFlower = useSelector((state: RootState) => state.flowersReducer.selectedFlower);
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
 
-    const isInCart = (): boolean => {
-        const cartItem = cartItems.find((el) => el.id === selectedFlower?.id);
-        if (cartItem !== undefined) return true;
-        return false;
-    };
-
     const handleAddingToCart = (): void => {
-        if (isInCart()) return;
-        dispatch(addToCart(selectedFlower as flower));
+        if (isInCart(selectedFlower?.id, cartItems)) return;
+        dispatch(addToCart(selectedFlower as ProductCardType));
     };
 
     const setFlowerDetails = () => {
@@ -62,7 +55,11 @@ const FlowerDetails: React.FC = () => {
                         <div>
                             <Button
                                 onClick={handleAddingToCart}
-                                label={isInCart() ? "in cart" : "Add to cart"}
+                                label={
+                                    isInCart(selectedFlower?.id, cartItems)
+                                        ? "in cart"
+                                        : "Add to cart"
+                                }
                             />
                         </div>
                     </div>

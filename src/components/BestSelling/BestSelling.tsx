@@ -14,7 +14,7 @@ const BestSelling: React.FC = () => {
 
     const renderBestSellingFlowers = (): JSX.Element[] => {
         return flowers?.map((flower, idx: number) => {
-            return <ProductCard key={idx} product={flower} />;
+            return <ProductCard key={idx} {...flower} />;
         });
     };
 

@@ -1,16 +1,17 @@
 import React from "react";
-import BlogCard, { BlogCardProps } from "../BlogCard/BlogCard";
+import BlogCard from "../BlogCard/BlogCard";
+import BlogCardType from "../../types/blog";
 import "./Articles.css";
 
 interface ArticlesProps {
     title?: string;
-    data: BlogCardProps[];
+    data: BlogCardType[];
 }
 
 const Articles: React.FC<ArticlesProps> = ({ title, data }) => {
     const renderArticles = (): JSX.Element[] => {
-        return data.map((article) => {
-            return <BlogCard {...article} />;
+        return data.map((article, idx) => {
+            return <BlogCard key={idx} {...article} />;
         });
     };
     return (
