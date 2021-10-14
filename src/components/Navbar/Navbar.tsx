@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FaSearch, FaShoppingCart } from "react-icons/fa";
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { FaSearch, FaHeart, FaShoppingCart, FaUser } from "react-icons/fa";
+import { VscSignOut } from "react-icons/vsc";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { LogOut } from "../../firebase/auth";
 import { setSearch } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
 import "./Navbar.css";
@@ -11,12 +13,18 @@ const Navbar: React.FC = () => {
     const [ShowSearch, setShowSearch] = useState(false);
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
     const search = useSelector((state: RootState) => state.flowersReducer.search);
+    const isLogged = useSelector((state: RootState) => state.userReducer.isLogged);
     const { pathname } = useLocation();
     const dispatch = useDispatch();
     const history = useHistory();
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
         dispatch(setSearch(e.target.value));
+    };
+    const handleLogout = async () => {
+        await LogOut();
+        history.push("/");
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -73,10 +81,21 @@ const Navbar: React.FC = () => {
                             value={search}
                         />
                     )}
+                    {isLogged && (
+                        <div onClick={() => history.push("/favorite")} className='split-center'>
+                            <span>{cartItems?.length}</span>
+                            <FaHeart />
+                        </div>
+                    )}
                     <div onClick={() => history.push("/cart")} className='split-center'>
                         <span>{cartItems?.length}</span>
                         <FaShoppingCart />
                     </div>
+                    {isLogged ? (
+                        <VscSignOut onClick={handleLogout} />
+                    ) : (
+                        <FaUser onClick={() => history.push("/login")} />
+                    )}
                 </div>
             </div>
         </header>

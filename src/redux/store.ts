@@ -4,9 +4,16 @@ import flowersReducer from "./ducks/flowers";
 import cartReducer from "./ducks/cart";
 import sortReducer from "./ducks/sort";
 import blogsReducer from "./ducks/blogs";
+import userReducer from "./ducks/user";
 import thunk from "redux-thunk";
 
-const rootReducer = combineReducers({ flowersReducer, cartReducer, sortReducer, blogsReducer });
+const rootReducer = combineReducers({
+    userReducer,
+    flowersReducer,
+    cartReducer,
+    sortReducer,
+    blogsReducer,
+});
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
