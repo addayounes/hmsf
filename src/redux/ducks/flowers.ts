@@ -9,6 +9,8 @@ type flower = ProductCardType;
 
 const SET_FLOWERS = "SET_FLOWERS";
 const SET_BEST_SELLING_FLOWERS = "SET_BEST_SELLING_FLOWERS";
+const ADD_TO_FAVORITE = "ADD_TO_FAVORITE";
+const REMOVE_FROM_FAVORITE = "REMOVE_FROM_FAVORITE";
 const SET_SELECTED_FLOWER = "SET_SELECTED_FLOWER";
 const SET_SEARCH = "SET_SEARCH";
 const FILTER_BEST_SELLINGS = "FILTER_BEST_SELLINGS";
@@ -19,6 +21,8 @@ const FILTER_PRICE = "FILTER_PRICE";
 type FlowersActions =
     | { type: "SET_FLOWERS"; payload: flower[] }
     | { type: "SET_BEST_SELLING_FLOWERS"; payload: flower[] }
+    | { type: "ADD_TO_FAVORITE"; payload: flower }
+    | { type: "REMOVE_FROM_FAVORITE"; payload: string }
     | { type: "SET_SELECTED_FLOWER"; payload: flower | null }
     | { type: "SET_SEARCH"; payload: string }
     | { type: "FILTER_BEST_SELLINGS" }
@@ -34,6 +38,16 @@ const setFlowers = (flowers: flower[]): FlowersActions => ({
 const setBestSellingFlowers = (flowers: flower[]): FlowersActions => ({
     type: SET_BEST_SELLING_FLOWERS,
     payload: flowers,
+});
+
+export const addToFavorite = (flowers: flower): FlowersActions => ({
+    type: ADD_TO_FAVORITE,
+    payload: flowers,
+});
+
+export const removeFromFavorite = (id: string): FlowersActions => ({
+    type: REMOVE_FROM_FAVORITE,
+    payload: id,
 });
 
 export const seSelectedFlower = (flower: flower | null): FlowersActions => ({
@@ -91,6 +105,7 @@ interface FlowersState {
     flowers: flower[];
     filteredFlowers: flower[];
     bestSelling: flower[];
+    favorites: flower[];
     selectedFlower: flower | null;
     search: string;
 }
@@ -101,6 +116,7 @@ const initialState: FlowersState = {
     flowers: [],
     filteredFlowers: [],
     bestSelling: [],
+    favorites: [],
     selectedFlower: null,
     search: "",
 };
@@ -111,6 +127,13 @@ const flowersReducer = (state = initialState, action: FlowersActions): FlowersSt
             return { ...state, flowers: action.payload, filteredFlowers: action.payload };
         case SET_BEST_SELLING_FLOWERS:
             return { ...state, bestSelling: action.payload };
+        case ADD_TO_FAVORITE:
+            return { ...state, favorites: [...state.favorites, action.payload] };
+        case REMOVE_FROM_FAVORITE:
+            return {
+                ...state,
+                favorites: state.favorites.filter((el) => el.id !== action.payload),
+            };
         case SET_SELECTED_FLOWER:
             return { ...state, selectedFlower: action.payload };
         case SET_SEARCH:

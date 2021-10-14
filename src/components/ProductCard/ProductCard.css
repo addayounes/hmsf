@@ -1,5 +1,6 @@
 .product-card {
     margin: 1rem;
+    position: relative;
 }
 .product-card-img {
     position: relative;
@@ -10,8 +11,8 @@
 
 .product-card-img > span {
     position: absolute;
-    left: 7.5px;
-    top: 7.5px;
+    left: 0.5rem;
+    top: 0.5rem;
     padding: 0.5em;
     background-color: var(--clr-secondary);
     color: var(--clr-secondary-light);
@@ -22,6 +23,27 @@
     margin-bottom: -0.1rem;
     margin-right: 0.35rem;
     fill: white;
+}
+.product-card > svg {
+    position: absolute;
+    z-index: 250;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 2rem;
+    background-color: #fff;
+    fill: hsl(0, 0%, 30%);
+    padding: 0.25em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+.product-card > svg:hover {
+    padding: 0.2em;
+    transition: 200ms ease;
+}
+.product-card > .active-favorite {
+    background-color: hsl(4, 88%, 48%);
+    fill: hsl(4, 88%, 92%);
 }
 .product-card-content .product-card-infos > p:first-child {
     text-transform: capitalize;

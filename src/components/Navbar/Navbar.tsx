@@ -12,6 +12,7 @@ const Navbar: React.FC = () => {
     const [Scroll, setScroll] = useState(false);
     const [ShowSearch, setShowSearch] = useState(false);
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
+    const favorites = useSelector((state: RootState) => state.flowersReducer.favorites);
     const search = useSelector((state: RootState) => state.flowersReducer.search);
     const isLogged = useSelector((state: RootState) => state.userReducer.isLogged);
     const { pathname } = useLocation();
@@ -83,7 +84,7 @@ const Navbar: React.FC = () => {
                     )}
                     {isLogged && (
                         <div onClick={() => history.push("/favorite")} className='split-center'>
-                            <span>{cartItems?.length}</span>
+                            <span>{favorites?.length}</span>
                             <FaHeart />
                         </div>
                     )}
