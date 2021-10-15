@@ -1,0 +1,5 @@
+.favorites > div > h1 {
+    font-weight: var(--fw-normal);
+    text-transform: capitalize;
+    margin-top: 2rem;
+}

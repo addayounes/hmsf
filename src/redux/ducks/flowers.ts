@@ -100,7 +100,6 @@ export const resetFilters = () => (dispatch: Dispatch, getState: () => RootState
     const { flowers } = getState().flowersReducer;
     dispatch(setFlowers(flowers));
 };
-
 interface FlowersState {
     flowers: flower[];
     filteredFlowers: flower[];
@@ -116,7 +115,7 @@ const initialState: FlowersState = {
     flowers: [],
     filteredFlowers: [],
     bestSelling: [],
-    favorites: [],
+    favorites: [] as flower[],
     selectedFlower: null,
     search: "",
 };

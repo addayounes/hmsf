@@ -14,9 +14,11 @@ const AddFavorite: React.FC<ProductCardProps> = (props) => {
 
     const handleFavorite = (): void => {
         if (isLogged) {
-            props.isFavorite
-                ? dispatch(removeFromFavorite(props.id))
-                : dispatch(addToFavorite(props));
+            if (props.isFavorite) dispatch(removeFromFavorite(props.id));
+            else {
+                const { isFavorite, children, ...toAdd } = props;
+                dispatch(addToFavorite(toAdd));
+            }
         } else history.push("/login");
     };
 
