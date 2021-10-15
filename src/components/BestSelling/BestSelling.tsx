@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
 import { getBestSellingFlowers } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
+import isFavorite from "../../utils/isFavorite";
 import Button from "../Button/Button";
 import ProductCard from "../ProductCard/ProductCard";
 import "./BestSelling.css";
@@ -11,10 +12,13 @@ const BestSelling: React.FC = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const flowers = useSelector((state: RootState) => state.flowersReducer.bestSelling);
+    const favorites = useSelector((state: RootState) => state.flowersReducer.favorites);
 
     const renderBestSellingFlowers = (): JSX.Element[] => {
         return flowers?.map((flower, idx: number) => {
-            return <ProductCard key={idx} {...flower} />;
+            return (
+                <ProductCard key={idx} isFavorite={isFavorite(flower.id, favorites)} {...flower} />
+            );
         });
     };
 

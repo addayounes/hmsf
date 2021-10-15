@@ -1,5 +1,6 @@
 .product-card {
     margin: 1rem;
+    position: relative;
 }
 .product-card-img {
     position: relative;
@@ -10,8 +11,8 @@
 
 .product-card-img > span {
     position: absolute;
-    left: 7.5px;
-    top: 7.5px;
+    left: 0.5rem;
+    top: 0.5rem;
     padding: 0.5em;
     background-color: var(--clr-secondary);
     color: var(--clr-secondary-light);

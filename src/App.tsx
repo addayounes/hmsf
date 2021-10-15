@@ -13,6 +13,7 @@ import Blog from "./pages/Blog/Blog";
 import Login from "./pages/Login/Login";
 import { useDispatch } from "react-redux";
 import { removeUser, setUser } from "./redux/ducks/user";
+import Favorite from "./pages/Favorite/Favorite";
 
 function App() {
     const auth = getAuth();
@@ -33,6 +34,7 @@ function App() {
                 <Switch>
                     <UnSignedRoute path='/login' component={Login} />
                     <PrivateRoute path='/cart' component={Cart} />
+                    <PrivateRoute path='/favorite' component={Favorite} />
                     <Route exact path='/' component={Home} />
                     <Route exact path='/store' component={Shop} />
                     <Route exact path='/store/:flowerID' component={FlowerDetails} />

@@ -1,9 +1,10 @@
 import React, { useEffect, useReducer, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { CSSTransition } from "react-transition-group";
 import { addFlowers } from "../../firebase/db";
 import { getFlowers } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
-import { CSSTransition } from "react-transition-group";
+import isFovorite from "../../utils/isFavorite";
 import Filter from "../../components/Filter/Filter";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import Sort from "../../components/Sort/Sort";
@@ -14,6 +15,7 @@ const Shop: React.FC = () => {
     const [, forceUpdate] = useReducer((x) => x + 1, 0);
     const [showFilterPanel, setShowFilterPanel] = useState(false);
     const flowers = useSelector((state: RootState) => state.flowersReducer.filteredFlowers);
+    const favorites = useSelector((state: RootState) => state.flowersReducer.favorites);
     const search = useSelector((state: RootState) => state.flowersReducer.search);
     const dispatch = useDispatch();
 
@@ -24,7 +26,13 @@ const Shop: React.FC = () => {
                 else if (el.title.toLowerCase().includes(search.toLowerCase())) return el;
             })
             .map((flower, idx: number) => {
-                return <ProductCard key={idx} {...flower} />;
+                return (
+                    <ProductCard
+                        key={idx}
+                        isFavorite={isFovorite(flower.id, favorites)}
+                        {...flower}
+                    />
+                );
             });
     };
 

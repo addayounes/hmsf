@@ -1,0 +1,21 @@
+svg.add-favorite-btn {
+    position: absolute;
+    z-index: 250;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 2rem;
+    background-color: #fff;
+    fill: hsl(0, 0%, 30%);
+    padding: 0.25em;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 200ms ease;
+}
+svg.add-favorite-btn:hover {
+    padding: 0.2em;
+    transition: 200ms ease;
+}
+.add-favorite-btn.active-favorite {
+    background-color: hsl(4, 88%, 48%);
+    fill: hsl(4, 88%, 92%);
+}

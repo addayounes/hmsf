@@ -5,10 +5,12 @@ import Button from "../../components/Button/Button";
 import Quantity from "../../components/Quantity/Quantity";
 import ProductCardType from "../../types/flower";
 import isInCart from "../../utils/isInCart";
+import isFovorite from "../../utils/isFavorite";
 import { addToCart } from "../../redux/ducks/cart";
 import { getSelectedFlower, seSelectedFlower } from "../../redux/ducks/flowers";
 import { RootState } from "../../redux/store";
 import "./FlowerDetails.css";
+import AddFavorite from "../../components/AddFavorite/AddFavorite";
 
 const FlowerDetails: React.FC = () => {
     const dispatch = useDispatch();
@@ -16,6 +18,11 @@ const FlowerDetails: React.FC = () => {
     const [detailsQuantity, setDetailsQuantity] = useState(1);
     const selectedFlower = useSelector((state: RootState) => state.flowersReducer.selectedFlower);
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
+    const favorites = useSelector((state: RootState) => state.flowersReducer.favorites);
+    const AddFavoriteProps = {
+        ...(selectedFlower as ProductCardType),
+        isFavorite: isFovorite(selectedFlower?.id as string, favorites),
+    };
 
     const handleAddingToCart = (): void => {
         if (isInCart(selectedFlower?.id, cartItems)) return;
@@ -41,6 +48,7 @@ const FlowerDetails: React.FC = () => {
                 <div className='product-detials split-between'>
                     <div className='product-details__img'>
                         <img src={selectedFlower?.image} alt='flower' />
+                        <AddFavorite {...AddFavoriteProps} />
                     </div>
                     <div className='product-details__infos'>
                         <div>

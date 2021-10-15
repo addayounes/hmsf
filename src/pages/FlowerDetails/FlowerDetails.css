@@ -11,6 +11,7 @@
     background-color: var(--clr-grey);
     height: 500px;
     width: auto;
+    position: relative;
 }
 .product-details__img > img {
     height: 100%;

@@ -2,13 +2,18 @@ import React from "react";
 import { FaCrown, FaCheck } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import ProductCardType from "../../types/flower";
-import isInCart from "../../utils/isInCart";
 import { addToCart } from "../../redux/ducks/cart";
 import { RootState } from "../../redux/store";
+import ProductCardType from "../../types/flower";
+import isInCart from "../../utils/isInCart";
+import AddFavorite from "../AddFavorite/AddFavorite";
 import "./ProductCard.css";
 
-const ProductCard: React.FC<ProductCardType> = (props) => {
+export interface ProductCardProps extends ProductCardType {
+    isFavorite: boolean;
+}
+
+const ProductCard: React.FC<ProductCardProps> = (props) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const cartItems = useSelector((state: RootState) => state.cartReducer.cartItems);
@@ -33,6 +38,7 @@ const ProductCard: React.FC<ProductCardType> = (props) => {
                     </span>
                 )}
             </div>
+            <AddFavorite {...props} />
             <div className='product-card-content split-between'>
                 <div className='product-card-infos'>
                     <p>{props.title}</p>
